@@ -1,4 +1,4 @@
-import { getAnimeResponse } from "@/app/lib/api-libs";
+import { getAnimeResponse } from "@/lib/api-libs";
 import AnimeList from "@/components/AnimeList/AnimeList";
 
 const page = async ({ params }: { params: Promise<{ keyword: string }> }) => {

@@ -6,14 +6,20 @@ type Props = {
 };
 
 const VideoPlayer = ({ youtubeID }: Props) => {
-  const option = {
+  const optionPC = {
     width: "850",
     height: "500",
+  };
+  
+  const optionHP = {
+    width: "330",
+    height: "220",
   };
 
   return (
     <>
-      <Youtube videoId={youtubeID} onReady={(event) => event.target.pauseVideo()} opts={option} />
+      <Youtube className="hidden lg:block" videoId={youtubeID} onReady={(event) => event.target.pauseVideo()} opts={optionPC} />
+      <Youtube className="block lg:hidden" videoId={youtubeID} onReady={(event) => event.target.pauseVideo()} opts={optionHP} />
     </>
   );
 };

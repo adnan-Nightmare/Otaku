@@ -11,12 +11,12 @@ const InputSearch = (props: Props) => {
   const router = useRouter();
 
   const handleSearch = (event: React.MouseEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
+    const keyword = searchRef.current?.value;
+    if (!keyword || keyword.trim() == "") return;
+
     if (event.type === "click" || event.key === "Enter") {
       event.preventDefault();
-      const keyword = searchRef.current?.value;
-      if (keyword) {
-        router.push(`/search/${keyword}`);
-      }
+      router.push(`/search/${keyword}`);
     }
   };
 

@@ -4,7 +4,7 @@ import Card from "./Card";
 type Props = {
   title: string | undefined;
   api: any;
-  link: string | undefined
+  link?: string | undefined
 };
 
 const AnimeList = ({ title = undefined, api, link =  undefined }: Props) => {

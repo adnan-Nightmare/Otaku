@@ -1,11 +1,14 @@
 import AnimeList from "@/components/AnimeList/AnimeList";
 import TopAnime from "@/components/TopAnime/TopAnime";
-import { getAnimeResponse } from "./lib/api-libs";
+import { getAnimeResponse, getNestedAnimeResponse, reproduce } from "../lib/api-libs";
 
 const page = async () => {
-  const trandingAnime = await getAnimeResponse({resource: 'top/anime', query: 'limit=6'})
-  const animeTopSeason = await getAnimeResponse({resource: 'seasons/now', query: 'limit=6'})
-  const animeUpComing = await getAnimeResponse({resource: 'seasons/upcoming', query: 'limit=6'})
+  const trandingAnime = await getAnimeResponse({ resource: "top/anime", query: "limit=6" });
+  const animeTopSeason = await getAnimeResponse({ resource: "seasons/now", query: "limit=6" });
+  const animeUpComing = await getAnimeResponse({ resource: "seasons/upcoming", query: "limit=6" });
+  let recomendedAnime = await getNestedAnimeResponse({ resource: "recommendations/anime", objectProperty: "entry"});
+  recomendedAnime = reproduce({data: recomendedAnime, gap: 6});
+
 
   return (
     <>
@@ -13,13 +16,16 @@ const page = async () => {
         <TopAnime api={trandingAnime} />
 
         {/* {/* Tranding  */}
-        <AnimeList title="Tranding" api={trandingAnime} link="tranding"/>
+        <AnimeList title="Tranding" api={trandingAnime} link="tranding" />
 
         {/* Tranding in Season */}
-        <AnimeList title="Populer This Season" api={animeTopSeason} link="populer"/>
+        <AnimeList title="Populer This Season" api={animeTopSeason} link="populer" />
 
         {/* Upcoming next season */}
-        <AnimeList title="Season Up Coming" api={animeUpComing} link="populer"/>
+        <AnimeList title="Season Up Coming" api={animeUpComing} link="populer" />
+
+        {/* Recomended */}
+        <AnimeList title="Recomended" api={recomendedAnime} />
       </div>
     </>
   );
