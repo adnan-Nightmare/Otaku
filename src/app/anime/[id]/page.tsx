@@ -2,6 +2,37 @@ import { getAnimeResponse } from "@/lib/api-libs";
 import VideoPlayer from "@/components/Utilities/VideoPlayer";
 import Image from "next/image";
 
+interface voiceActors{
+  language: string;
+  person: {
+    mal_id: number
+    url: string
+    images: {
+      jpg:{
+        image_url: string
+      }
+    }
+    name:string
+  }
+}
+
+interface character{
+  mal_id: number
+  url: string
+  images: {
+    webp:{
+      image_url: string
+    }
+  }
+  name:string
+}
+
+interface data {
+  character: character
+  role: string
+  voice_actors: voiceActors[]
+}
+
 const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const param = (await params).id;
 
@@ -36,7 +67,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div>
           <h2 className="font-bold text-gray-500 mb-3">Character</h2>
           <div className="flex flex-col lg:grid grid-cols-3 gap-5">
-            {characterAnime.data.slice(0, 6).map((c: any, i: number) => (
+            {characterAnime.data.slice(0, 6).map((c: data, i: number) => (
               <div className="bg-white flex justify-between rounded-lg h-fit w-80" key={i}>
                 <div className="flex">
                   <Image src={c.character.images.webp.image_url} className="object-cover w-14 h-16 rounded-l-lg" alt="" width={90} height={30} />
@@ -46,9 +77,9 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
                   </div>
                 </div>
                 {c.voice_actors
-                  .filter((a: any) => a.language === "Japanese")
+                  .filter((a: voiceActors) => a.language === "Japanese")
                   .slice(0, 1)
-                  .map((ac: any, i: number) => (
+                  .map((ac: voiceActors, i: number) => (
                     <div className="flex flex-row-reverse" key={i}>
                       <Image src={ac.person.images.jpg.image_url} className="w-14 h-16 object-cover rounded-r-lg" alt="" width={80} height={80} />
                       <div className="text-sm font-semibold pr-1 text-gray-500 relative">

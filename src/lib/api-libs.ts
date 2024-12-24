@@ -16,11 +16,11 @@ export async function getAnimeResponse({ resource, query }: Props) {
 export const getNestedAnimeResponse = async ({ resource, objectProperty }: Props) => {
   const response = await getAnimeResponse({ resource });
 
-  return response.data.flatMap((item: any) => item[objectProperty!]);
+  return response.data?.flatMap((item: any) => item[objectProperty!]);
 };
 
 export const reproduce = ({ data, gap }: Props) => {
-  const first = ~~(Math.random() * (data!.length - gap!) + 1);
+  const first = ~~(Math.random() * (data?.length - gap!) + 1);
   const last = first + gap!;
 
   const response = {
