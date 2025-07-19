@@ -25,7 +25,7 @@ const page = async () => {
         <AnimeList title="Season Up Coming" api={animeUpComing} link="populer" />
 
         {/* Recomended */}
-        <AnimeList title="Recomended" api={recomendedAnime} />
+        {/* <AnimeList title="Recomended" api={recomendedAnime} /> */}
       </div>
     </>
   );

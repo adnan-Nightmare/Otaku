@@ -22,9 +22,9 @@ const InputSearch = (props: Props) => {
 
   return (
     <>
-      <input type="text" placeholder="cari..." className="outline-none px-2 w-full bg-transparent" ref={searchRef} onKeyDown={handleSearch} />
+      <input type="text" placeholder="cari..." className="outline-none px-2 w-full bg-transparent text-black" ref={searchRef} onKeyDown={handleSearch} />
       <button className="h-full px-3" onClick={handleSearch}>
-        <MagnifyingGlass size={32} />
+        <MagnifyingGlass size={24} className="text-black" />
       </button>
     </>
   );

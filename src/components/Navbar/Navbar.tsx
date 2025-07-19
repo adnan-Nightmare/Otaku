@@ -6,9 +6,9 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <nav className="fixed top-0 z-10 shadow bg-primary p-2 w-screen lg:p-5 lg:px-60">
+    <nav className="fixed top-0 z-10 shadow bg-primary p-2 w-screen lg:p-5 lg:px-24">
       <div className=" flex justify-between items-center">
-        <Link href="/" className="font-bold text-2xl">
+        <Link href="/" className="font-bold text-2xl text-black">
           Otaku
         </Link>
 

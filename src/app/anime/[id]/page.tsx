@@ -50,13 +50,13 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <VideoPlayer youtubeID={anime.data.trailer.youtube_id} />
       </div>
       <div className="bg-white m-2 lg:m-5 lg:mx-20 p-2 px-5 rounded-lg">
-        <h3 className="text-2xl lg:text-3xl font-semibold capitalize">{anime.data.title}</h3>
+        <h3 className="text-2xl lg:text-3xl font-semibold capitalize text-black">{anime.data.title}</h3>
         <div className="mt-2">
           <p className="text-gray-600 text-xs lg:text-sm">
             Type: {anime.data.type} | Status: {anime.data.status} | Duration: {anime.data.duration}
           </p>
         </div>
-        <p className="mt-10 text-sm lg:text-base text-justify">
+        <p className="mt-10 text-sm lg:text-base text-justify text-black">
           {anime.data.synopsis}
 
           <br />
